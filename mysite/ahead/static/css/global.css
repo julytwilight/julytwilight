@@ -19,10 +19,9 @@ body { background: url("http://julytwilight.qiniudn.com/paper_fibers-1723c7113d0
 
 /* =header
 -------------------------------------------------------------- */
-.navbar-inverse { background: transparent; border: none }
+.navbar-inverse { background: #fff; border: none }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
   color: #3D464D;
-  background-color: transparent;
   font-weight: 600
 }
 /* title */

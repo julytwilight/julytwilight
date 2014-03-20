@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  height: 100%;
+  min-height: 650px;
+  margin: 0 auto;
+  width: 700px;
+  padding: 0 54px;
+}
+
+.describe {
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 64px;
+  margin-top: -230px;
+  overflow: hidden;
+  font-size: 30px;
+  color: #336699;
+  font-family: Flamenco;
+}
+
+.home-panel {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -230px;
+  right: 100px;
+  width: 350px;
+  font-size: 30px;
+  color: #336699;
+  font-family: "STHeiti", "\5b8b\4f53";
+}
+
+.view {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.view a {
+  color: #007EE2;
+}

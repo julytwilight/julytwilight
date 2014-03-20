@@ -40,8 +40,11 @@ INSTALLED_APPS = (
 
     # my app
     'ahead',
+    'dreams',
 
     # third package
+    'south',
+    'pagination'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -59,6 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'ahead.urls'
@@ -104,3 +108,16 @@ MEDIA_ROOT = 'ahead/media/'
 # Examples: "http://example.com/media/", "http://media.example.com/"
 
 MEDIA_URL = '/media/'
+
+# 自定义用户Model
+AUTH_USER_MODEL = 'ahead.User'
+
+# 登陆
+LOGIN_REDIRECT_URL = "home"
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'ahead.utils.auth.backends.weibo.WeiboOAuth2',
+)

@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="col-xs-12 dream-show clearfix">
+  <div class="row">
+    <div class="col-xs-8">
+      <div>
+        {{ dream.text | linebreaksbr }}
+      </div>
+      <hr>
+      <div class="comments">
+        <div class="mb20"><span style='font-family: Georgia; font-size: 26px;'>{{ dream.comments }}</span> 条评论</div>
+        {% for c in dream.comment_set.all %}
+          <div class="commnet">
+            <div class="comment-warp clearfix">
+              <div class="col-xs-1 avatar"><img src="{{ c.user.avatar }}" width="30px" height="30px"></div>
+              <div class="col-xs-11 comment-text">
+                <span><a href="{% url 'guy' c.user.id %}">{{ c.user.username }}</a></span> &nbsp;&nbsp;{{ c.text }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-xs-4 fr">
+      {% if request.user.username %}
+        <form role="form" class="only-textarea-form" method="post" action="{% url 'dream:comment' dream.id %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <textarea id="dream" name="text" class="form-control" rows="10" name="content" id="content"></textarea>
+          </div>
+
+          <div class="clearfix">
+            <button type="submit" class="btn btn-default btn-lg btn-block center-block fr">评论</button>
+          </div>
+        </form>
+      {% else %}
+        <a href="{% url 'binding' 'weibo' %}?next={% url 'dream:show' dream.id %}"><img src="{% static 'images/sinaLogin.gif' %}">微博登陆后方可评论</a>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

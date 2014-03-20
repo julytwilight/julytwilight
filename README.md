@@ -1,4 +1,4 @@
-django-template
+July Twilight
 ===============
 
-My django project initial
+A website of write your dreams

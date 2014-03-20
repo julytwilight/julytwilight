@@ -1,15 +1,29 @@
 # -*- coding: utf-8 -*-
 from ..settings import *
 
+DEBUG = False
+
+TEMPLATE_DEBUG = DEBUG
+
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.mysql',
         'NAME': 'secret',
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'root',
+        'PASSWORD': 'Agood123',
         'HOST': '',
         'PORT': '',
     }
+}
+
+ALLOWED_HOSTS = ['julytwilight.com', 'www.julytwilight.com']
+
+# 微博
+WEIBO = {
+    'APP_KEY': 2934779440,
+    'APP_SECRET': '94e3b4568884821c34aca5164638f78c',
+    'CALLBACK_URL': 'http://julytwilight.com/callback/weibo',
+    'UNCALLBACK_URL': 'http://julytwilight.com/uncallback/weibo'
 }
 
 # A sample logging configuration. The only tangible logging

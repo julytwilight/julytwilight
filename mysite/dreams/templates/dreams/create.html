@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<div class="col-xs-10 dream-write">
+  
+  <form role="form" class="only-textarea-form" method="post" action="">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="dream">写下您记忆的梦</label>
+      <textarea id="dream" name="text" class="form-control" rows="15" name="content" id="content"></textarea>
+    </div>
+
+    <div class="clearfix">
+    <div class="btn-group fl" data-toggle="buttons" style="100%">
+      <label class="btn btn-primary" title="选中后别人都看不到喔">
+        <input name="private" value="1" type="checkbox">私有
+      </label>
+    </div>
+    <button type="submit" class="btn btn-default btn-lg btn-block center-block fr">发布</button>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

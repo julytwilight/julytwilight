@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="{% url 'home' %}" class="navbar-brand"><img width="40px" src="{% static 'images/moon-logo.png' %}">&nbsp;&nbsp;<span>七月的暮光</span></a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li class=""><a href="{% url 'dream:all' %}">浏览</a></li>
+    </ul>
+
+    {% if request.user.id %}
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="javascript:" data-toggle="modal" data-target="#myModal" data-backdrop="static">添加</a></li>
+          <li><a href="{% url 'home' %}">{{ request.user.username }}</a></li>
+          <li><a href="{% url 'logout' %}">退出</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+    {% endif %}
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">添加一个梦境</h4>
+      </div>
+      <form role="form" class="dream-create-form" method="post" action="{% url 'dream:create' %}">
+        <div class="modal-body">
+          <div class="alert alert-warning">
+            每天只能记录一个梦境喔
+          </div>
+          <div class="form-group">
+            <textarea id="dream" name="text" class="form-control" rows="15" name="content" id="content"></textarea>
+          </div>
+          <div class="btn-group fl" data-toggle="buttons" style="100%">
+            <label>
+              <input type="checkbox" name="private" id="sync-private">
+              私有
+            </label>
+            <label>
+              <input type="checkbox" name="weibo" id="sync-weibo" checked>
+              同步到微博
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary">发布</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

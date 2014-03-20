@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<html>
+<head>
+  <title>七月的暮光</title>
+  <link rel="shortcut icon" href="/static/images/moon-icon.png">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/welcome.css' %}">
+  <link href='http://fonts.googleapis.com/css?family=Flamenco' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="describe">
+    <p>Dream is not</p>
+    <p>what you see in sleep,</p>
+    <p>Dream is the thing which</p>
+    <p>does not let you sleep.</p>
+  </div>
+
+  <div class="home-panel">
+    <img src="http://julytwilight.qiniudn.com/moon-icon.png">
+    <br>留住你的梦乡
+    <div class="view"><a href="{% url 'dream:all' %}">浏览</a> | <a href="{% url 'binding' 'weibo' %}">微博登陆</a></div>
+  </div>
+</div>
+
+</body>
+</html>

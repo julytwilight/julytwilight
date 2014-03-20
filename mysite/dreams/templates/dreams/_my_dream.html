@@ -1,0 +1,28 @@
+{% load pagination_tags %}
+
+{% autopaginate dreams 30 %}
+
+{% if not dreams %}
+  <div class="alert alert-info">
+    您还没有记录, 请<a href="javascript:" data-toggle="modal" data-target="#myModal" data-backdrop="static"class="alert-link">添加</a>一条梦乡, 
+    或者<a href="{% url 'dream:all' %}" class="alert-link">浏览</a>其他人的梦乡
+  </div>
+{% endif %}
+
+{% for dream in dreams %}
+
+<div class="col-md-4 bs-col" dream-id="{{ dream.id }}">
+  <div class="bs-container clearfix">
+    <div class="bs-body">
+      {{ dream.text | linebreaksbr }}
+    </div>
+    <div class="fr mt10">
+      <i class="fa fa-comments"></i>&nbsp;{{ dream.comments }}
+      <span class="bs-date">{{ dream.create_at | date:"Y-m-d" }}</span>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+{% paginate %}

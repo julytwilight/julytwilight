@@ -1,0 +1,32 @@
+{% load pagination_tags %}
+
+{% autopaginate dreams 30 %}
+
+{% for dream in dreams %}
+<div class="col-md-4 bs-col" dream-id="{{ dream.id }}">
+  <div class="bs-container">
+    <div class="bs-info clearfix">
+      <div class="fl">
+        <img class="fl" width="30px" height="30px" src="{{ dream.user.avatar }}">
+        <a href="{% url 'guy' dream.user.id %}" class="bs-name">{{ dream.user.username }}</a>
+      </div>
+      <div class="fr mt10">
+        <i class="fa fa-comments"></i>&nbsp;{{ dream.comments }}
+        <span class="bs-date">{{ dream.create_at | date:"Y-m-d" }}</span>
+      </div>
+    </div>
+    <div class="mt5 clearfix">
+      <div class="bs-dimmed ml0"></div>
+      <div class="bs-dimmed"></div>
+      <div class="bs-dimmed"></div>
+      <div class="bs-dimmed"></div>
+      <div class="bs-dimmed"></div>
+    </div>
+    <div class="bs-body">
+      {{ dream.text | linebreaksbr }}
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% paginate %}

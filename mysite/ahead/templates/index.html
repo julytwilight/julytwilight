@@ -1,9 +1,14 @@
 {% extends "layouts/base.html" %}
 {% load staticfiles %}
+{% load pagination_tags %}
+{% autopaginate dreams 30 %}
 
 {% block content %}
 <div class="row bs-row">
   {% include 'dreams/_my_dream.html' %}
+</div>
+<div class="row bs-row">
+  {% paginate %}
 </div>
 {% endblock %}
 
